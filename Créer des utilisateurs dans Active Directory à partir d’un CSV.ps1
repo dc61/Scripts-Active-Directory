@@ -7,7 +7,7 @@ Foreach($Utilisateur in $CSVData){
     $UtilisateurNom = $Utilisateur.Nom
     $UtilisateurLogin = ($UtilisateurPrenom).Substring(0,1) + "." + $UtilisateurNom
     $UtilisateurEmail = "$UtilisateurLogin@proton.me"
-    $UtilisateurMotDePasse = "password"
+    $UtilisateurMotDePasse = "Root1.Root1."
     $UtilisateurFonction = $Utilisateur.Fonction
 
     # Vérifier la présence de l'utilisateur dans Active Directory
