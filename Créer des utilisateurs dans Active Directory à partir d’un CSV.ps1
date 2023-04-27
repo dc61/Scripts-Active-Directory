@@ -1,6 +1,6 @@
 
 
-$CSVFile = "C:\Scripts\Utilisateurs.csv"
+$CSVFile = "C:\Scripts\u1.csv"
 $CSVData = Import-CSV -Path $CSVFile -Delimiter ";" -Encoding UTF8
 
 Foreach($Utilisateur in $CSVData){
@@ -27,51 +27,11 @@ Foreach($Utilisateur in $CSVData){
                     -UserPrincipalName "$UtilisateurLogin@studi.local" `
                     -EmailAddress $UtilisateurEmail `
                     -Title $UtilisateurFonction `
-                    -Path "OU=Compta,DC=STUDI,DC=LOCAL" `  #Unité Organisationnelle "compta" , et studi.local par exemple
+                    -Path "OU=i,DC=STUDI,DC=LOCAL" `
                     -AccountPassword(ConvertTo-SecureString $UtilisateurMotDePasse -AsPlainText -Force) `
-                    -ChangePasswordAtLogon $true `
                     -Enabled $true
-
+                    
+                    
         Write-Output "Création de l'utilisateur : $UtilisateurLogin ($UtilisateurNom $UtilisateurPrenom)"
-    }
-}
-
-------------------------------------------------------------------------
-test: 
-
-
-$CSVFile = "C:\Scripts\U.csv"
-$CSVData = Import-CSV -Path $CSVFile -Delimiter ";" -Encoding UTF8
-
-Foreach($User in $CSVData){
-
-    $UPrenom = $U.Prenom
-    $UNom = $U.Nom
-    $ULogin = ($UPrenom).Substring(0,1) + "." + $UNom
-    $UEmail = "$ULogin@proton.me"
-    $U_mdp = "password"
-    $UFonction = $U.Fonction
-
-   
-    if (Get-ADUser -Filter {SamAccountName -eq $ULogin})
-    {
-        Writeout "L'identifiant $ULogin existe déjà dans l'AD"
-    }
-    else
-    {
-        New-ADUser -Name "$UNom $UPrenom" `
-                    -DisplayName "$UNom $UPrenom" `
-                    -GivenName $UPrenom `
-                    -Surname $UNom `
-                    -SamAccountName $ULogin `
-                    -UserPrincipalName "$ULogin@studi.local" `
-                    -EmailAddress $UEmail `
-                    -Title $UFonction `
-                    -Path "OU=Compta,DC=STUDI,DC=LOCAL" ` 
-                    -AccountPassword(ConvertTo-SecureString $UMotDePasse -AsPlainText -Force) `
-                    -ChangePasswordAtLogon $true `
-                    -Enabled $true
-
-        Writeout "Création de l'user : $ULogin ($UNom $UPrenom)"
     }
 }
