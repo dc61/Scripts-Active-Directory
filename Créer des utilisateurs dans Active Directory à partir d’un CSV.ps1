@@ -1,5 +1,3 @@
-
-
 $CSVFile = "C:\Scripts\u1.csv"
 $CSVData = Import-CSV -Path $CSVFile -Delimiter ";" -Encoding UTF8
 
