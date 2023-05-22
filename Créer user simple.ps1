@@ -9,3 +9,8 @@ New-ADUser -Name "Bob" `
            -AccountPassword(Read-Host -AsSecureString "Mot de passe ?") `
            -ChangePasswordAtLogon $true `
            -Enabled $true
+
+
+#------
+
+New-aduser -name "Ace" -AccountPassword(Read-Host -AsSecureString "Mot de passe ?") 
