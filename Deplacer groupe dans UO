@@ -1,0 +1,8 @@
+# Spécifiez le chemin complet du groupe à déplacer
+$groupeDN = "CN=NomDuGroupe,OU=SourceOU,DC=mondomaine,DC=com"
+
+# Spécifiez le chemin complet de la nouvelle OU de destination
+$newOUDN = "OU=NouvelleOU,DC=mondomaine,DC=com"
+
+# Déplacez le groupe vers la nouvelle OU
+Move-ADObject -Identity $groupeDN -TargetPath $newOUDN
